@@ -1,19 +1,14 @@
-import { signIn } from "@/auth/auth";
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { LogIn } from "lucide-react";
+import { FaGoogle } from "react-icons/fa";
+import { signInAction } from "./auth.action";
 
 export const SignInButton = () => {
   return (
-    <form
-      action={async () => {
-        "use server";
-        await signIn("google");
-      }}
-    >
-      <Button variant="secondary" size="sm" type="submit">
-        <LogIn size={16} className="mr-2" />
-        Signin with Google
-      </Button>
-    </form>
+    <Button variant="secondary" size="sm" onClick={() => signInAction()}>
+      <FaGoogle size={16} className="mr-2" />
+      Signin with Google
+    </Button>
   );
 };

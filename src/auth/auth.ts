@@ -4,7 +4,12 @@ import { prisma } from "@/lib/prisma";
 import Google from "next-auth/providers/google";
 import { env } from "@/env";
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
+export const {
+  handlers,
+  auth: baseAuth,
+  signIn,
+  signOut,
+} = NextAuth({
   adapter: PrismaAdapter(prisma),
   theme: {
     logo: "/app-title.png",

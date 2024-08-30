@@ -11,15 +11,21 @@ import {
 import { PropsWithChildren } from "react";
 import { signOutAction } from "./auth.action";
 import { LogOut } from "lucide-react";
+import { redirect } from "next/navigation";
 
 export type LoggedInDropdownProps = PropsWithChildren;
 
 export const LoggedInDropdown = (props: LoggedInDropdownProps) => {
+  function handleSignOut() {
+    signOutAction();
+    redirect("/");
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{props.children}</DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem onClick={() => signOutAction()}>
+        <DropdownMenuItem onClick={handleSignOut}>
           <LogOut size={16} className="mr-2" />
           Sign out
         </DropdownMenuItem>
